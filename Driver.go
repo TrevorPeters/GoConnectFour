@@ -13,6 +13,7 @@ func main() {
         col, turn   int
         gameOver    bool = false
         token       byte
+
     )
     for !gameOver {
         if turn % 2 == 0 {
@@ -26,9 +27,10 @@ func main() {
         if n < 1 {
             fmt.Println(err)
         }
-
         insertToken(&gameBoard, token, col)
-
+        if checkWinner(&gameBoard, token){
+            gameOver = true
+        }
         fmt.Println(toString(&gameBoard))
     }
 }
